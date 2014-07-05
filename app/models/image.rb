@@ -1,6 +1,7 @@
 class Image < ActiveRecord::Base
 	belongs_to :user
 	has_attached_file :attachment,
+                    :styles => {:small => "150x150>"},
 										:storage => :s3,
 										:s3_host_name => 's3-us-west-2.amazonaws.com',
 										:s3_credentials => Proc.new{|a| a.instance.s3_credentials}
