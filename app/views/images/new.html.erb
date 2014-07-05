@@ -1,0 +1,5 @@
+<%= form_for @image, :url => images_path, :html => { :multipart => true } do |f| %>
+	<%= f.text_field :description, placeholder: 'description' %>
+	<%= f.file_field :attachment %>
+	<%= f.submit 'Create' %>
+<% end %>

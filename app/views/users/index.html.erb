@@ -1,0 +1,5 @@
+<% @images.each do |image| %>
+<%= image_tag image.attachment.url %>
+<% end %>
+
+<%= link_to 'upload', new_image_path %>
