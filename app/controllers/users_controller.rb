@@ -22,6 +22,10 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def upload
+		@image = Image.new
+	end
+
 	private
 
 	def user_params
