@@ -1,6 +1,7 @@
 <div class="navbar">
+	<%= link_to "My Pics", mypics_path, id: "my_pics", remote: true %>
   <%= link_to 'New', root_path %>
   <%= link_to 'Rankings', root_path %>
-  <%= link_to 'Upload', new_image_path %>
   <%= link_to 'Sign Out', session_path(current_user), :method => :delete, id: 'logout' %>
 </div>
+
