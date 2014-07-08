@@ -1,5 +1,13 @@
 <div class="image_container">
-	<% @images.each do |image| %>
-	<%= image_tag image.attachment.url(:small) %>
+	<% sorted = @images.sort_by {|image| image.votecount}.reverse %>
+	<% sorted.each do |image| %>
+	<%= link_to '+', "#{image.id}/upvote", remote: true %>
+	<div class="vote-<%=image.id%>">
+		<%= image.votecount %>
+	</div>
+	<%= link_to '-', "#{image.id}/downvote", remote: true %>
+	<div class="image-<%=image.id%>">
+		<%= image_tag image.attachment.url(:small) %>
+	</div>
 	<% end %>
 </div>

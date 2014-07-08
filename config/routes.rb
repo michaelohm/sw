@@ -3,12 +3,17 @@ Rails.application.routes.draw do
   root :to => 'users#index'
 
   match 'mypics', to: 'images#mypics', via: [:get]
+  match 'rankedimages', to: 'images#rankedimages', via: [:get]
+
+
+  match ':id/upvote', to: 'images#upvote', via: [:get, :post]
+  match ':id/downvote', to: 'images#downvote', via: [:get, :post]
 
   resources :users, only: [:index, :new, :create]
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :images, only: [:new, :create]
+  resources :images, only: [:new, :create, :upvote, :downvote]
 end
 
 
