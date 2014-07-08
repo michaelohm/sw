@@ -1,5 +1,6 @@
 class Image < ActiveRecord::Base
 	belongs_to :user
+	has_many :votes
 	has_attached_file :attachment,
                     :styles => {:small => "150x150>"},
 										:storage => :s3,

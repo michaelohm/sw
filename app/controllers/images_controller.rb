@@ -29,6 +29,32 @@ class ImagesController < ApplicationController
 	end
 
 	def rankedimages
+		@images = Image.all
+	end
+
+	def upvote
+		@image = Image.find(params[:id])
+		@vote = Vote.where(user_id: current_user.id, image_id: @image.id)
+		if @vote.length > 0
+			flash.alert = "You can only vote once per image."
+		else
+			@vote = Vote.create(user_id: current_user.id, image_id: @image.id, voted: true)
+			@image.votecount +=1
+			@image.save
+		end
+	end
+
+	def downvote
+		@image = Image.find(params[:id])
+		@vote = Vote.where(user_id: current_user.id, image_id: @image.id)
+		p @vote
+		if @vote.length > 0
+			flash.alert = "You can only vote once per image."
+		else
+			@vote = Vote.create(user_id: current_user.id, image_id: @image.id, voted: true)
+			@image.votecount -=1
+			@image.save
+		end
 	end
 
 	private
